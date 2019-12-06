@@ -1,2 +1,2 @@
-# linewrapper
-Cscrap providing very simple text wrapping.
+# linewrapper 0.0.0.
+
