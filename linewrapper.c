@@ -1,6 +1,6 @@
 /**
  *  @file linewrapper.c
- *  @version 0.0.1-dev0
+ *  @version 0.0.2-dev0
  *  @date Thu Nov  1 08:19:13 CDT 2018
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
@@ -59,7 +59,7 @@ lwrap_free(struct linewrapper *p)
 const char *
 lwrap_version(void)
 {
-   return "0.0.1-dev0";
+   return "0.0.2-dev0";
 }
 
 static void
