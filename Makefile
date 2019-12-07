@@ -52,7 +52,7 @@ echeck: linewrapper.o varstr.o
 	  && ( LD_PRELOAD=libefence.so ./t/a.out ); \
 	done 
 
-indent:
+indent: stamp
 	@indent $(INDENT_FLAGS) linewrapper.c
 	@indent $(INDENT_FLAGS) linewrapper.h
 	@indent $(INDENT_FLAGS) t/test.c
