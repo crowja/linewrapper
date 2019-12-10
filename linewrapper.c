@@ -28,8 +28,6 @@ struct linewrapper {
    struct varstr *s;
 };
 
-/*** lwrap_new() ***/
-
 struct linewrapper *
 lwrap_new(void)
 {
@@ -44,17 +42,13 @@ lwrap_new(void)
    return tp;
 }
 
-/*** lwrap_free() ***/
-
 void
-lwrap_free(struct linewrapper *p)
+lwrap_free(struct linewrapper **pp)
 {
-   if (!_IS_NULL(p->s))
-      varstr_free(p->s);
-   _FREE(p);
+   if (!_IS_NULL((*pp)->s))
+      varstr_free(&(*pp)->s);
+   _FREE(*pp);
 }
-
-/*** lwrap_version() ***/
 
 const char *
 lwrap_version(void)
@@ -70,8 +64,6 @@ _insert_spaces(struct varstr *x, unsigned n)
    for (i = 0; i < n; i++)
       varstr_catc(x, ' ');
 }
-
-/*** lwrap_format() ***/
 
 char       *
 lwrap_format(struct linewrapper *p, const unsigned indent, const unsigned width,

@@ -1,7 +1,8 @@
 SHELL = /bin/sh
 
 GCC_STRICT_FLAGS = -pedantic -ansi -W -Wall -Wstrict-prototypes -Wmissing-prototypes -Wmissing-declarations -O2
-GCC_SANITIZE_FLAGS = -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer
+GCC_SANITIZE_FLAGS = 
+#GCC_SANITIZE_FLAGS = -fsanitize=address -fsanitize=undefined -fno-omit-frame-pointer
 OTHER_SOURCE =
 OTHER_INCLUDE = -I.
 CPPFLAGS = -I. $(OTHER_INCLUDE)

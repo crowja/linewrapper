@@ -126,7 +126,7 @@ main(void)
    printf("FORMATTED TEXT IS\n");
    printf("%s\n", lwrap_format(f, 5, 80, text));
 
-   lwrap_free(f);
+   lwrap_free(&f);
 
 #else
 

@@ -1,7 +1,7 @@
 /**
  *  @file varstr.h
- *  @version 1.2.0-dev0
- *  @date Thu Dec  5 21:24:22 CST 2019
+ *  @version 1.3.0-dev0
+ *  @date Tue Dec 10 13:43:59 CST 2019
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
  *  @details FIXME
@@ -17,7 +17,6 @@ struct varstr;
  *  @brief Create and return a new varstr object
  *  @details FIXME longer description here ...
  */
-
 struct varstr *varstr_new(void);
 
 
@@ -26,15 +25,13 @@ struct varstr *varstr_new(void);
  *  @brief Clean up and free a varstr structure
  *  @details FIXME longer description here ...
  */
-
-int         varstr_free(struct varstr *p);
+int         varstr_free(struct varstr **pp);
 
 /**
  *
  *  @brief Return the version of this package
  *  @details FIXME longer description here ...
  */
-
 const char *varstr_version(void);
 
 int         varstr_buffersize(struct varstr *p, unsigned size, unsigned extend);
@@ -48,7 +45,6 @@ int         varstr_buffersize(struct varstr *p, unsigned size, unsigned extend);
  *
  *  @param x FIXME
  */
-
 void        varstr_cat(struct varstr *p, char *x);
 
 /**
@@ -60,7 +56,6 @@ void        varstr_cat(struct varstr *p, char *x);
  *
  *  @param x FIXME
  */
-
 void        varstr_catc(struct varstr *p, char x);
 
 /**
@@ -72,7 +67,6 @@ void        varstr_catc(struct varstr *p, char x);
  *
  *  @param x FIXME
  */
-
 void        varstr_chomp(struct varstr *p);
 
 /**
@@ -84,7 +78,6 @@ void        varstr_chomp(struct varstr *p);
  *
  *  @param x FIXME
  */
-
 void        varstr_compact(struct varstr *p);
 
 /**
@@ -96,7 +89,6 @@ void        varstr_compact(struct varstr *p);
  *
  *  @param x FIXME
  */
-
 void        varstr_empty(struct varstr *p);
 
 /**
@@ -108,7 +100,6 @@ void        varstr_empty(struct varstr *p);
  *
  *  @param x FIXME
  */
-
 void        varstr_lrtrim(struct varstr *g);
 
 /**
@@ -120,7 +111,6 @@ void        varstr_lrtrim(struct varstr *g);
  *
  *  @param x FIXME
  */
-
 unsigned    varstr_extend(struct varstr *p, unsigned extend);
 
 /**
@@ -132,7 +122,6 @@ unsigned    varstr_extend(struct varstr *p, unsigned extend);
  *
  *  @param x FIXME
  */
-
 unsigned    varstr_init(struct varstr *p, unsigned extend);
 
 /**
@@ -144,9 +133,7 @@ unsigned    varstr_init(struct varstr *p, unsigned extend);
  *
  *  @param x FIXME
  */
-
 char       *varstr_str(struct varstr *p);
-
 
 /**
  *
@@ -159,6 +146,5 @@ char       *varstr_str(struct varstr *p);
  */
 
 char       *varstr_to_s(struct varstr *p);
-
 
 #endif

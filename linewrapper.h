@@ -29,7 +29,7 @@ struct linewrapper *lwrap_new(void);
  *  @details FIXME longer description here ...
  */
 
-void        lwrap_free(struct linewrapper *p);
+void        lwrap_free(struct linewrapper **pp);
 
 /**
  *  @brief Return the version of this package.

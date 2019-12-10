@@ -51,7 +51,8 @@ test_constr(void)
 
    z = lwrap_new();
    ASSERT("Constructor test", z);
-   lwrap_free(z);
+   lwrap_free(&z);
+   ASSERT_EQUALS(NULL, z);
 }
 
 

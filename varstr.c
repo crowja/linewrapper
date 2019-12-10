@@ -1,7 +1,7 @@
 /**
  *  @file varstr.c
- *  @version 1.2.0-dev0
- *  @date Thu Dec  5 21:24:22 CST 2019
+ *  @version 1.3.0-dev0
+ *  @date Tue Dec 10 13:43:59 CST 2019
  *  @copyright %COPYRIGHT%
  *  @brief FIXME
  *  @details FIXME
@@ -23,15 +23,11 @@
 #endif
 #define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
-static const char version[] = "1.2.0-dev0";
-
 struct varstr {
    unsigned    size;
    unsigned    extend;
    char       *x;
 };
-
-/*** varstr_new() ***/
 
 struct varstr *
 varstr_new(void)
@@ -49,28 +45,21 @@ varstr_new(void)
    return tp;
 }
 
-
-/*** varstr_free() ***/
-
 int
-varstr_free(struct varstr *p)
+varstr_free(struct varstr **pp)
 {
-   _FREE(p->x);
-   _FREE(p);
+   _FREE((*pp)->x);
+   _FREE(*pp);
+   *pp = NULL;
 
    return 0;
 }
 
-
-/*** varstr_version() ***/
-
 const char *
 varstr_version(void)
 {
-   return version;
+   return "1.3.0-dev0";
 }
-
-/*** varstr_buffersize() ***/
 
 int
 varstr_buffersize(struct varstr *p, unsigned size, unsigned extend)
@@ -93,8 +82,6 @@ varstr_buffersize(struct varstr *p, unsigned size, unsigned extend)
    return 0;
 }
 
-/*** varstr_cat() ***/
-
 void
 varstr_cat(struct varstr *p, char *x)
 {
@@ -112,8 +99,6 @@ varstr_cat(struct varstr *p, char *x)
 
    strcat(p->x, x);
 }
-
-/*** varstr_catc() ***/
 
 void
 varstr_catc(struct varstr *p, char x)
@@ -134,9 +119,6 @@ varstr_catc(struct varstr *p, char x)
    (p->x)[len + 1] = '\0';
 }
 
-
-/*** varstr_chomp() ***/
-
 void
 varstr_chomp(struct varstr *p)
 {
@@ -151,9 +133,6 @@ varstr_chomp(struct varstr *p)
 
    cp[i + 1] = '\0';
 }
-
-
-/*** varstr_compact() ***/
 
 void
 varstr_compact(struct varstr *p)
@@ -174,17 +153,11 @@ varstr_compact(struct varstr *p)
    (p->x)[j] = '\0';
 }
 
-
-/*** varstr_empty() ***/
-
 void
 varstr_empty(struct varstr *p)
 {
    (p->x)[0] = '\0';
 }
-
-
-/*** varstr_extend() ***/
 
 unsigned
 varstr_extend(struct varstr *p, unsigned extend)
@@ -195,17 +168,11 @@ varstr_extend(struct varstr *p, unsigned extend)
    return p->extend;
 }
 
-
-/*** varstr_init() ***/
-
 unsigned
 varstr_init(struct varstr *p, unsigned extend)
 {
    return varstr_extend(p, extend);
 }
-
-
-/*** varstr_lrtrim() ***/
 
 void
 varstr_lrtrim(struct varstr *g)
@@ -231,17 +198,11 @@ varstr_lrtrim(struct varstr *g)
    varstr_chomp(g);
 }
 
-
-/*** varstr_str() ***/
-
 char       *
 varstr_str(struct varstr *p)
 {
    return p->x;
 }
-
-
-/*** varstr_to_s() ***/
 
 char       *
 varstr_to_s(struct varstr *p)
@@ -249,7 +210,6 @@ varstr_to_s(struct varstr *p)
    char       *str = (char *) malloc((1 + strlen(p->x)) * sizeof(char));
    return strcpy(str, p->x);
 }
-
 
 #undef _IS_NULL
 #undef _FREE
