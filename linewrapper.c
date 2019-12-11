@@ -48,6 +48,7 @@ lwrap_free(struct linewrapper **pp)
    if (!_IS_NULL((*pp)->s))
       varstr_free(&(*pp)->s);
    _FREE(*pp);
+   *pp = NULL;
 }
 
 const char *
