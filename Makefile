@@ -78,8 +78,8 @@ indent: stamp
 	@indent $(INDENT_FLAGS) t/test.c
 
 stamp:
-	@bash stamper.bash linewrapper.c
-	@bash stamper.bash linewrapper.h
+	@stamper.bash linewrapper.c
+	@stamper.bash linewrapper.h
 
 clean:
 	@/bin/rm -f *.o *~ *.BAK *.bak core.*
