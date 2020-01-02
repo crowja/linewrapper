@@ -2,9 +2,8 @@
  *  @file linewrapper.h
  *  @version 0.0.2-dev0
  *  @date Thu Nov  1 08:19:13 CDT 2018
- *  @copyright %COPYRIGHT%
- *  @brief FIXME
- *  @details FIXME
+ *  @copyright 2020 John A. Crow <crowja@gmail.com>
+ *  @license Unlicense <http://unlicense.org/>
  */
 
 #ifndef _LINEWRAPPER_H_
