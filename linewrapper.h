@@ -1,6 +1,6 @@
 /**
  *  @file linewrapper.h
- *  @version 0.0.2-dev0
+ *  @version 0.1.0-dev0
  *  @date Thu Nov  1 08:19:13 CDT 2018
  *  @copyright 2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
