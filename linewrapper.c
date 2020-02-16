@@ -1,8 +1,8 @@
 /**
  *  @file linewrapper.c
  *  @version 0.1.0-dev0
- *  @date Thu Nov  1 08:19:13 CDT 2018
- *  @copyright 2020 John A. Crow <crowja@gmail.com>
+ *  @date Sun Feb 16, 2020 04:51:18 PM CST
+ *  @copyright 2019-2020 John A. Crow <crowja@gmail.com>
  *  @license Unlicense <http://unlicense.org/>
  */
 
@@ -13,15 +13,15 @@
 #include "linewrapper.h"
 #include "varstr.h"
 
-#ifdef  _IS_NULL
-#undef  _IS_NULL
+#ifdef  IS_NULL
+#undef  IS_NULL
 #endif
-#define _IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
+#define IS_NULL(p)   ((NULL == (p)) ? (1) : (0))
 
-#ifdef  _FREE
-#undef  _FREE
+#ifdef  FREE
+#undef  FREE
 #endif
-#define _FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
+#define FREE(p)      ((NULL == (p)) ? (0) : (free((p)), (p) = NULL))
 
 struct linewrapper {
    struct varstr *s;
@@ -33,7 +33,7 @@ lwrap_new(void)
    struct linewrapper *tp;
 
    tp = (struct linewrapper *) malloc(sizeof(struct linewrapper));
-   if (_IS_NULL(tp))
+   if (IS_NULL(tp))
       return NULL;
 
    tp->s = NULL;
@@ -44,9 +44,9 @@ lwrap_new(void)
 void
 lwrap_free(struct linewrapper **pp)
 {
-   if (!_IS_NULL((*pp)->s))
+   if (!IS_NULL((*pp)->s))
       varstr_free(&(*pp)->s);
-   _FREE(*pp);
+   FREE(*pp);
    *pp = NULL;
 }
 
@@ -74,7 +74,7 @@ lwrap_format(struct linewrapper *p, const unsigned indent, const unsigned width,
    unsigned    state = init;
    unsigned    curr_width = 0;
 
-   if (_IS_NULL(p->s))
+   if (IS_NULL(p->s))
       p->s = varstr_new();
    else
       varstr_empty(p->s);
@@ -141,5 +141,5 @@ lwrap_format(struct linewrapper *p, const unsigned indent, const unsigned width,
    return varstr_str(p->s);
 }
 
-#undef  _IS_NULL
-#undef  _FREE
+#undef  IS_NULL
+#undef  FREE
